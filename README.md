@@ -1,3 +1,3 @@
 # js-playground
 
-Coś się zmienia na serwerze
+To repozytorium moze być wykorzystane do nauki gita i podstaw JavaScriptu
