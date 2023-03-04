@@ -1,0 +1,19 @@
+## ID 1.1
+
+**Tytuł**: Niepoprawne logowanie do aplikacji
+
+**Środowisko**: http://example.com
+
+**Wersja**: 1
+
+**Wymagania**: Uzytkownik slawek jest zarejestrowany.
+
+### Kroki reprodukcji:
+
+1. Wprowadzenie adresu e-mail.
+2. Wprowadzenie hasła.
+3. Kliknięcie przycisku “Zaloguj”.
+
+**Oczekiwany rezultat**: Komunikat o błędzie logowania
+
+**Autor**: Sławomir Radzymiński
