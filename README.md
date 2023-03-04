@@ -1,3 +1,5 @@
 # js-playground
 
-To repozytorium moze być wykorzystane do nauki gita i podstaw JavaScriptu
+Zmiana w README z brancha TC-122
+
+
