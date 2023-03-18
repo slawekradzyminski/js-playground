@@ -63,4 +63,7 @@ jobs:
         path: node_modules
 
     - name: Run tests
-      run: npm test
+      run: |
+        chmod u+x ./node_modules/.bin/*
+        npm test
+        
