@@ -1,0 +1,69 @@
+name: Build and Test
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  install-dependencies:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Cache Node.js modules
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-${{ matrix.node-version }}-
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Upload node_modules
+      uses: actions/upload-artifact@v3
+      with:
+        name: node_modules
+        path: node_modules
+
+  run-tests:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Download node_modules
+      uses: actions/download-artifact@v3
+      with:
+        name: node_modules
+        path: node_modules
+
+    - name: Run tests
+      run: |
+        chmod u+x ./node_modules/.bin/*
+        npm test
+        
