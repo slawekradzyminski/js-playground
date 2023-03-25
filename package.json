@@ -1,7 +1,7 @@
 {
   "name": "unit",
   "version": "1.0.0",
-  "description": "",
+  "description": "Cantest.it training project",
   "main": "index.js",
   "scripts": {
     "test": "jest"
