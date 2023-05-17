@@ -21,6 +21,10 @@ test('should return proper values', () => {
         count: 2
     })
     expect(person.children.count).to.eq(2)
+    expect(person.children.names[0]).to.eq('Piotr')
+    expect(person.children.names[1]).to.eq('Zofia')
+    expect(person.abcd).to.be.undefined
+    expect(person.children.names[2]).to.be.undefined
 });
 
 test('should modify keys in new object', () => {
