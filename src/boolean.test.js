@@ -25,10 +25,26 @@ test('should be able to buy a beer', () => {
     const age = 20
     const money = 10
 
-    if (age > 18) {
+    if (age >= 18 && money >= 3) {
         canBuyABeer = true
+    } else {
+        console.log("You can't buy a beer. I'm sorry!")
     }
 
     expect(canBuyABeer).to.eq(true)
+})
+
+test('should be able to verify that left side equals the right side', () => {
+    const a = 10
+    const b = 10
+
+    expect(a === b).to.eq(true)
+})
+
+test('should be able to verify that left side not equals the right side', () => {
+    const a = 10
+    const b = "10"
+
+    expect(a !== b).to.eq(true)
 })
 
