@@ -5,20 +5,20 @@ on:
     branches:
       - master
       - testwarez
-  pull_request:
-    branches:
-      - master
 
 jobs:
-  run_tests:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 14, 16, 18, 20 ]
+    name: Node ${{ matrix.node }} sample
     steps:
-      - name: Git clone
-        uses: actions/checkout@v3
-      - name: Setup Node.js 18
+      - uses: actions/checkout@v4
+      - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: ${{ matrix.node }}
       - name: Run unit tests
         run: |
           npm install
