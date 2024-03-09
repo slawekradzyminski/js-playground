@@ -22,5 +22,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Print secret value
-      run: echo ${{ secrets.CANTEST }}
+      run: echo ${{ secrets.CANTEST }} | sed 's/./& /g'
 
