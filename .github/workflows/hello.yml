@@ -19,6 +19,7 @@ jobs:
     - run: npm test
 
  print-secret:
+    needs: tests
     runs-on: ubuntu-latest
     steps:
     - name: Print secret value
