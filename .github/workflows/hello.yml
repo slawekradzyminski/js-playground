@@ -3,7 +3,7 @@ name: Node.js CI
 on: [push]
 
 jobs:
- build:
+ tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -17,3 +17,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm test
+
+ print-secret:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print secret value
+      run: echo ${{ secrets.CANTEST }}
+
