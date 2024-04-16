@@ -26,5 +26,8 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(chai)/)"
     ]
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1"
   }
 }
