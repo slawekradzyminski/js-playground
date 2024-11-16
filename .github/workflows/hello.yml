@@ -1,27 +1,22 @@
-name: Node.js CI
+name: Nasza nazwa
 
-on: [push]
+on: push
 
 jobs:
  tests:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
+    # Checkout kodu z repozytorium
+    - name: Checkout
+      uses: actions/checkout@v4 
+    # Ustawiamy wersję Node.js
+    - name: Use Node.js 20
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm test
-
- print-secret:
-    needs: tests
-    runs-on: ubuntu-latest
-    steps:
-    - name: Print secret value
-      run: echo ${{ secrets.CANTEST }} | sed 's/./& /g'
-
+        node-version: 20
+    # Instalujemy zależności
+    - name: Install dependencies
+      run: npm install
+    # Wykonujemy testy  
+    - name: Run tests
+      run: npm test
