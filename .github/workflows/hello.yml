@@ -5,15 +5,13 @@ on: push
 jobs:
  tests:
     runs-on: ubuntu-latest
+    # Konfiguracja kontenera
+    container:
+      image: node:20
     steps:
     # Checkout kodu z repozytorium
     - name: Checkout
       uses: actions/checkout@v4 
-    # Ustawiamy wersję Node.js
-    - name: Use Node.js 20
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
     # Instalujemy zależności
     - name: Install dependencies
       run: npm install
