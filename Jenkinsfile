@@ -1,15 +1,9 @@
 pipeline {
     agent { docker 'node:20' }
     stages {
-        stage('Example Build') {
+        stage('install and run tests') {
             steps {
-                echo 'Hello, Node'
                 sh 'npm install'
-            }
-        }
-        stage('Example Test') {
-            steps {
-                echo 'Hello, Test'
                 sh 'npm test'
             }
         }
